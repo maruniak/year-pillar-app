@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Годовой столп — Шаг 1</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Годовой столп — Шаг 1</h1>
+    <p class="lead">Рассчитайте Небесный ствол и Земную ветвь года по дате рождения. Можно настроить дату начала китайского года.</p>
+
+    <section class="card">
+      <h2>Ввод</h2>
+      <div class="field">
+        <label for="birthDate">Дата рождения</label>
+        <input id="birthDate" type="date" required>
+      </div>
+
+      <div class="field">
+        <label for="boundaryMode">Граница китайского года</label>
+        <select id="boundaryMode">
+          <option value="LiChun">Ли Чунь (по умолчанию 4 февраля)</option>
+          <option value="CNY">Китайский Новый год (введите дату)</option>
+          <option value="Custom">Произвольная дата</option>
+        </select>
+      </div>
+
+      <div class="field hidden" id="boundaryDateField">
+        <label for="boundaryDate">Дата границы</label>
+        <input id="boundaryDate" type="date">
+        <div class="hint" id="boundaryHint"></div>
+      </div>
+
+      <button id="btnCalc" class="primary">Рассчитать</button>
+    </section>
+
+    <section class="card" id="resultCard" hidden>
+      <h2>Результат</h2>
+      <div class="grid">
+        <div>
+          <div class="label">Столп года</div>
+          <div class="value big" id="pillar">—</div>
+        </div>
+        <div>
+          <div class="label">Инь/Ян</div>
+          <div class="value" id="yinYang">—</div>
+        </div>
+        <div>
+          <div class="label">Стихия (ствол)</div>
+          <div class="value" id="element">—</div>
+        </div>
+        <div>
+          <div class="label">Животное (ветвь)</div>
+          <div class="value" id="animal">—</div>
+        </div>
+        <div>
+          <div class="label">№ в 60-летнем цикле</div>
+          <div class="value" id="cycleIndex">—</div>
+        </div>
+        <div>
+          <div class="label">TCM-пара органов</div>
+          <div class="value" id="tcm">—</div>
+        </div>
+        <div>
+          <div class="label">Использованная граница</div>
+          <div class="value" id="boundaryUsed">—</div>
+        </div>
+      </div>
+
+      <h3>JSON</h3>
+      <pre id="jsonOut" class="code"></pre>
+      <button id="btnCopy" class="secondary">Скопировать JSON</button>
+    </section>
+
+    <section class="card" id="historyCard" hidden>
+      <h2>Недавние расчёты</h2>
+      <ul id="historyList" class="history"></ul>
+      <button id="btnClearHistory" class="ghost">Очистить историю</button>
+    </section>
+
+    <footer>
+      <p>© Year Pillar App — MIT</p>
+    </footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
